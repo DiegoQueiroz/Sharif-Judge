@@ -293,7 +293,38 @@ if [ "$EXT" = "c" ] || [ "$EXT" = "cpp" ]; then
 		COMPILER="g++"
 	fi
 	EXEFILE="s_$(echo $FILENAME | sed 's/[^a-zA-Z0-9]//g')" # Name of executable file
-	cp $PROBLEMPATH/$UN/$FILENAME.$EXT code.c
+	
+	# Uncompress zip,rar,7z files using 7z (requires p7zip-full package)
+	ISCOMPRESSED=false
+	for compressedext in zip rar 7z; do
+		if [ -f "$PROBLEMPATH/$UN/$FILENAME.$compressedext" ]; then
+			7z x "$PROBLEMPATH/$UN/$FILENAME.$compressedext" >/dev/null
+			
+			# Concatenate all *.cpp and *.h files into a single file
+			# This allow file visualization on the web interface
+			for cppfile in `ls *.cpp *.h 2>/dev/null`; do
+				echo "==============================================================================="
+				echo "===== $cppfile"
+				echo "==============================================================================="
+				echo ""
+				cat $cppfile
+				echo ""
+				echo ""
+			done >"$PROBLEMPATH/$UN/$FILENAME.$EXT" 2>/dev/null
+			
+			# zip file should contain a "main.c" or "main.cpp" file
+			# name "code.c" is forbidden as filename
+			mv "main.$EXT" code.c
+			
+			ISCOMPRESSED=true
+			break;
+		fi
+	done
+	
+	if ! $ISCOMPRESSED; then
+		cp $PROBLEMPATH/$UN/$FILENAME.$EXT code.c
+	fi
+	
 	shj_log "Compiling as $EXT"
 	if $SANDBOX_ON; then
 		shj_log "Enabling EasySandbox"
