@@ -1,5 +1,7 @@
 # Sharif Judge
 
+**This repository contains a modified version of Sharif-Judge with modifications to fit the needs for a discipline at the University of Sao Paulo.  There is no long time support for it, so please, use it at your own risk!**
+
 [Sharif Judge](https://github.com/mjnaderi/Sharif-Judge) is a free and open source online judge for C, C++, Java and
 Python programming courses.
 
@@ -37,6 +39,7 @@ For running Sharif Judge, a Linux server with following requirements is needed:
   * MySql or PostgreSql database
   * PHP must have permission to run shell commands using [`shell_exec()`](http://www.php.net/manual/en/function.shell-exec.php) php function (specially `shell_exec("php");`)
   * Tools for compiling and running submitted codes (`gcc`, `g++`, `javac`, `java`, `python2` and `python3` commands)
+  * 7-zip to uncompress files (p7zip-full package in Debian based distros)
   * It is better to have `perl` installed for more precise time and memory limit and imposing size limit on output of submitted code.
 
 ## Installation
