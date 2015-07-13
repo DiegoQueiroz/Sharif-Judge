@@ -1,6 +1,6 @@
-# Sharif Judge
+# Sharif Judge mod for PCS3111
 
-**This repository contains a modified version of Sharif-Judge with modifications to fit the needs for a discipline at the University of Sao Paulo.  There is no long time support for it, so please, use it at your own risk!**
+**This repository contains a modified version of Sharif-Judge with modifications to fit the needs for a discipline at the University of Sao Paulo (PCS3111 - Laboratório de Programação Orientada à Objetos para a Engenharia Elétrica).  There is no long time support for it, so please use it at your own risk!**
 
 [Sharif Judge](https://github.com/mjnaderi/Sharif-Judge) is a free and open source online judge for C, C++, Java and
 Python programming courses.
